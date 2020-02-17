@@ -18,16 +18,6 @@ namespace counter
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             symbol = 'a';
@@ -48,11 +38,12 @@ namespace counter
             symbol = 'd';
         }
 
-        private void ResultButton_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)
         {
-            double result=0;
+            double result = 0;
             double a, b;
-            if(!double.TryParse(this.textBox1.Text, out a) || !double.TryParse(this.textBox2.Text, out b)){
+            if (!double.TryParse(this.textBox1.Text, out a) || !double.TryParse(this.textBox2.Text, out b))
+            {
                 MessageBox.Show("框中应输入数字");
                 return;
             }
