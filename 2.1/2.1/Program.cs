@@ -10,6 +10,7 @@ namespace _2._1
     {
         static void Main(string[] args)
         {
+            bool isPrime=true;
             int num = 0;
             num = int.Parse(Console.ReadLine());
             int flag = (int)Math.Sqrt(num);
@@ -19,11 +20,14 @@ namespace _2._1
                 while (num % factor == 0)
                 {
                     Console.Write($"{factor},");
+                    isPrime = false;
                     num /= factor;
                 }
             }
-            if (num >= factor)
+            if (num >= factor&&!isPrime)
                 Console.Write(factor);
+            if (isPrime)
+                Console.Write(num);
         }
     }
 }
