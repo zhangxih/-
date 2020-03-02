@@ -15,28 +15,18 @@ namespace _3._1
     public class ShapeFactory
     {
         private Shape shape = null;
-        public Shape CreateRandomShape()
+        public Shape CreateShape(String style,int width,int height)
         {
-            byte[] buffer = Guid.NewGuid().ToByteArray();
-            int iSeed = BitConverter.ToInt32(buffer, 0);
-            Random random = new Random(iSeed);
-            while (true)
+            switch (style)
             {
-                switch (random.Next(1, 4))
-                {
-                    case 1:
-                        shape = new Oblong(random.Next(1, 100), random.Next(1, 100));
-                        break;
-                    case 2:
-                        shape = new Square(random.Next(1, 100));
-                        break;
-                    case 3:
-                        shape = new Triangle(random.Next(1, 100), random.Next(1, 100));
-                        break;
-                    default:
-                        break;
-                }
-                if (shape.Legal())
+                case ("Oblong"):
+                    shape = new Oblong(width, height);
+                    break;
+                case ("Square"):
+                    shape = new Square(width);
+                    break;
+                case ("Triangle"):
+                    shape = new Triangle(width, height);
                     break;
             }
             return shape;
@@ -170,14 +160,43 @@ namespace _3._1
 
     class Program
     {
+        public Shape CreateRandomShape()
+        {
+            ShapeFactory shapeFactory = new ShapeFactory();
+            Shape shape = null;
+            byte[] buffer = Guid.NewGuid().ToByteArray();
+            int iSeed = BitConverter.ToInt32(buffer, 0);
+            Random random = new Random(iSeed);
+            while (true)
+            {
+                switch (random.Next(1, 4))
+                {
+                    case 1:
+                        shape = shapeFactory.CreateShape("Oblong", random.Next(1, 100), random.Next(1, 100));
+                        break;
+                    case 2:
+                        shape = shapeFactory.CreateShape("Square", random.Next(1, 100), random.Next(1, 100));
+                        break;
+                    case 3:
+                        shape = shapeFactory.CreateShape("Triangle", random.Next(1, 100), random.Next(1, 100));
+                        break;
+                    default:
+                        break;
+                }
+                if (shape.Legal())
+                    break;
+            }
+            return shape;
+        }
+
         static void Main(string[] args)
         {
+            Program p = new Program();
             double totalArea = 0;
             Shape[] shape = new Shape[10];
-            ShapeFactory shapeFactory = new ShapeFactory();
             for (int i = 0; i < 10; i++)
             {
-                shape[i] = shapeFactory.CreateRandomShape();
+                shape[i] = p.CreateRandomShape();
                 Console.WriteLine(
                     $"第{i+1}个图案为{shape[i].GetType().Name},面积为{shape[i].GetArea()}"
                     );
