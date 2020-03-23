@@ -13,6 +13,7 @@ namespace OrderService_Test
         {
             orderservice.AddOrder(new Order(12, "a", "b", 1));
             orderservice.AddOrder(new Order(12, "a", "b", 1));
+            Assert.IsFalse(orderservice.IsNull());
         }
 
         [TestMethod]
@@ -23,6 +24,7 @@ namespace OrderService_Test
             orderservice.OrderSelect(2);
             orderservice.OrderSelect("a");
             orderservice.OrderSelect("b");
+            CollectionAssert.Equals(orderservice.OrderSelect(1), orderservice.OrderSelect("a"));
         }
 
         [TestMethod]
@@ -30,6 +32,7 @@ namespace OrderService_Test
         {
             orderservice.AddOrder(new Order(12, "a", "b", 1));
             orderservice.OrderSelectByName("b");
+            Assert.IsNotNull(orderservice.OrderSelectByName("b"));
         }
 
         [TestMethod]
@@ -38,6 +41,7 @@ namespace OrderService_Test
             orderservice.AddOrder(new Order(12, "a", "b", 1));
             orderservice.OrderDelete(1);
             orderservice.OrderDelete(2);
+            Assert.IsTrue(orderservice.IsNull());
         }
 
         [TestMethod]
@@ -46,6 +50,7 @@ namespace OrderService_Test
             orderservice.AddOrder(new Order(12, "a", "b", 1));
             orderservice.OrderChange(1, 13, "c");
             orderservice.OrderChange(1, 13, "c");
+            Assert.IsFalse(orderservice.IsNull());
         }
 
         [TestMethod]
@@ -55,6 +60,7 @@ namespace OrderService_Test
             orderservice.AddOrder(new Order(13, "c", "d", 2));
             orderservice.AddOrder(new Order(11, "e", "f", 3));
             orderservice.OrderOrder();
+            Assert.IsFalse(orderservice.IsNull());
         }
 
         [TestMethod]
@@ -62,6 +68,7 @@ namespace OrderService_Test
         {
             orderservice.AddOrder(new Order(12, "a", "b", 1));
             orderservice.OrderOutput();
+            Assert.IsFalse(orderservice.IsNull());
         }
 
         [TestMethod]
@@ -69,6 +76,7 @@ namespace OrderService_Test
         {
             orderservice.AddOrder(new Order(12, "a", "b", 1));
             orderservice.Export();
+            Assert.IsFalse(orderservice.IsNull());
         }
 
         [TestMethod]
@@ -79,6 +87,15 @@ namespace OrderService_Test
             orderservice.Export();
             orderservice.OrderDelete(1);
             orderservice.Import();
+            Assert.IsFalse(orderservice.IsNull());
+        }
+
+        [TestCleanup]
+        public void Clean()
+        {
+            orderservice.OrderDelete(1);
+            orderservice.OrderDelete(2);
+            orderservice.OrderDelete(3);
         }
     }
 }

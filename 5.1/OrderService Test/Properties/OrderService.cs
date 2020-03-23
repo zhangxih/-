@@ -24,6 +24,11 @@ namespace _5._1
             orders.Add(order);
         }
 
+        public bool IsNull()
+        {
+            return (this.orders.Count == 0);
+        }
+
         public List<Order> OrderSelect(int n)
         {
             var order = from o in orders

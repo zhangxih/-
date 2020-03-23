@@ -10,7 +10,7 @@ namespace _5._1
 {
     public class OrderService
     {
-        List<Order> orders = new List<Order>();
+        public List<Order> orders = new List<Order>();
         public void AddOrder(Order order)
         {
             foreach(Order o in orders)
@@ -138,6 +138,11 @@ namespace _5._1
             {
                 this.AddOrder(o);
             }
+        }
+
+        public bool IsNull()
+        {
+            return (this.orders.Count == 0);
         }
     }
 }
