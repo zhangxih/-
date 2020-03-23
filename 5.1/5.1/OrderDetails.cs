@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace _5._1
 {
-    class OrderDetails
+    [Serializable]
+    public class OrderDetails
     {
         public Price p;
         public Goods g;

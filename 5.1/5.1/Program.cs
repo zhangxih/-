@@ -84,6 +84,14 @@ namespace _5._1
                 {
                     orderservice.OrderOutput();
                 }
+                else if (s == "export")
+                {
+                    orderservice.Export();
+                }
+                else if (s == "import")
+                {
+                    orderservice.Import();
+                }
             }
         }
     }

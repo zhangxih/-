@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace _5._1
 {
-    class Goods
+    [Serializable]
+    public class Goods
     {
         private String name;
         public String Name

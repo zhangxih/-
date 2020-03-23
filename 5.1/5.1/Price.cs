@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace _5._1
 {
-    class Price
+    [Serializable]
+    public class Price
     {
         private int money;
         public int Money

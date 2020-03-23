@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace _5._1
 {
-    class Order:IComparable
+    [Serializable]
+    public class Order:IComparable
     {
         public List<OrderDetails> details = new List<OrderDetails>();
         private int number;
