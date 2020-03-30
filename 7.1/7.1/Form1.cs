@@ -17,11 +17,25 @@ namespace _7._1
             InitializeComponent();
         }
 
-        int n=10;
-        int leng = 100;
+        int n;
+        int leng;
 
         private void drawbutton_Click(object sender, EventArgs e)
         {
+            if ((!int.TryParse(this.depth.Text, out n)&& depth.Text != "递归深度")
+                || (!int.TryParse(this.length.Text, out leng)&& length.Text != "主干长度"))
+            {
+                MessageBox.Show("框中应输入数字");
+                return;
+            }
+            if (depth.Text == "递归深度")
+            {
+                n = 10;
+            }
+            if (length.Text == "主干长度")
+            {
+                leng = 100;
+            }
             if (graphics == null)
                 graphics = this.CreateGraphics();
             drawCayleyTree(n, 200, 310, leng, -Math.PI / 2);
@@ -50,24 +64,6 @@ namespace _7._1
             graphics.DrawLine(
                 pencolor,
                 (int)x0, (int)y0, (int)x1, (int)y1);
-        }
-
-        private void depth_TextChanged(object sender, EventArgs e)
-        {
-            if (!int.TryParse(this.depth.Text, out n))
-            {
-                MessageBox.Show("框中应输入数字");
-                return;
-            }
-        }
-
-        private void length_TextChanged(object sender, EventArgs e)
-        {
-            if (!int.TryParse(this.length.Text, out leng))
-            {
-                MessageBox.Show("框中应输入数字");
-                return;
-            }
         }
 
         private void rightlength_Scroll(object sender, EventArgs e)
@@ -111,6 +107,16 @@ namespace _7._1
                     pencolor = Pens.Green;
                     break;
             }
+        }
+
+        private void depth_Enter(object sender, EventArgs e)
+        {
+            depth.Text = "";
+        }
+
+        private void length_Enter(object sender, EventArgs e)
+        {
+            length.Text = "";
         }
     }
 }

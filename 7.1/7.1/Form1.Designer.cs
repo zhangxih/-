@@ -65,7 +65,7 @@
             this.depth.TabIndex = 1;
             this.depth.Text = "递归深度";
             this.depth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.depth.TextChanged += new System.EventHandler(this.depth_TextChanged);
+            this.depth.Enter += new System.EventHandler(this.depth_Enter);
             // 
             // length
             // 
@@ -75,7 +75,7 @@
             this.length.TabIndex = 2;
             this.length.Text = "主干长度";
             this.length.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.length.TextChanged += new System.EventHandler(this.length_TextChanged);
+            this.length.Enter += new System.EventHandler(this.length_Enter);
             // 
             // rightlength
             // 
