@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Main = new System.Windows.Forms.GroupBox();
+            this.ResetButton = new System.Windows.Forms.Button();
             this.ChangeButton = new System.Windows.Forms.Button();
             this.InputButton = new System.Windows.Forms.Button();
             this.OutputButton = new System.Windows.Forms.Button();
@@ -41,7 +42,6 @@
             this.DeleteButton = new System.Windows.Forms.Button();
             this.CreateButton = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.ResetButton = new System.Windows.Forms.Button();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.goodsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -58,6 +58,8 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -68,7 +70,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 69);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(800, 166);
+            this.dataGridView1.Size = new System.Drawing.Size(800, 293);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
@@ -91,6 +93,16 @@
             this.Main.TabIndex = 1;
             this.Main.TabStop = false;
             this.Main.Text = "主菜单";
+            // 
+            // ResetButton
+            // 
+            this.ResetButton.Location = new System.Drawing.Point(737, 20);
+            this.ResetButton.Name = "ResetButton";
+            this.ResetButton.Size = new System.Drawing.Size(23, 23);
+            this.ResetButton.TabIndex = 9;
+            this.ResetButton.Text = "⚪";
+            this.ResetButton.UseVisualStyleBackColor = true;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // ChangeButton
             // 
@@ -187,27 +199,20 @@
             // 
             // dataGridView2
             // 
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.AutoGenerateColumns = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.priceDataGridViewTextBoxColumn,
             this.goodsDataGridViewTextBoxColumn});
             this.dataGridView2.DataSource = this.DetailBindingSource;
-            this.dataGridView2.Location = new System.Drawing.Point(0, 241);
+            this.dataGridView2.Location = new System.Drawing.Point(0, 368);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(800, 209);
+            this.dataGridView2.Size = new System.Drawing.Size(800, 82);
             this.dataGridView2.TabIndex = 2;
-            // 
-            // ResetButton
-            // 
-            this.ResetButton.Location = new System.Drawing.Point(737, 20);
-            this.ResetButton.Name = "ResetButton";
-            this.ResetButton.Size = new System.Drawing.Size(23, 23);
-            this.ResetButton.TabIndex = 9;
-            this.ResetButton.Text = "⚪";
-            this.ResetButton.UseVisualStyleBackColor = true;
-            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // priceDataGridViewTextBoxColumn
             // 
