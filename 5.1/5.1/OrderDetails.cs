@@ -11,6 +11,20 @@ namespace _5._1
     {
         public Price p;
         public Goods g;
+        public int Price
+        {
+            get
+            {
+                return p.Money;
+            }
+        }
+        public String Goods
+        {
+            get
+            {
+                return g.Name;
+            }
+        }
         public OrderDetails(int price, String goods)
         {
             this.p = new Price(price);

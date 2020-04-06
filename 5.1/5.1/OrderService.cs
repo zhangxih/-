@@ -46,23 +46,26 @@ namespace _5._1
         public List<Order> OrderSelectByName(String n)
         {
             List<Order> list = new List<Order>();
-            try
-            {
                 foreach (Order o in orders)
                 {
                     var t = from de in o.details
                             where de.g.Name == n
                             select de;
+                try
+                {
                     if (t.First() != null)
                         list.Add(o);
                 }
+                catch (Exception) { }
+                }
                 var order = from o in list
-                            orderby o.Money
-                            select o;
+                           orderby o.Money
+                           select o;
                 list = order.ToList();
-                return list;
+            try { 
+                    return list;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 Console.WriteLine("未找到订单！");
                 list.Add(new Order(0, "无", "无", 0));
