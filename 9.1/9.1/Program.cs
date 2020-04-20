@@ -19,7 +19,6 @@ namespace _9._1
         public List<Url> used = new List<Url>();
         public int n = 0;
         public int count = 0;
-        public bool flag = false;
         static void Main(string[] args)
         {
             SimpleCrawler myCrawler = new SimpleCrawler();
@@ -36,25 +35,26 @@ namespace _9._1
             while (true)
             {
                 string current = null;
-                flag = false;
+                string[] change = new string[20];
                 foreach (string url in urls.Keys)
                 {
                     if (!(bool)urls[url])
                     {
                         current = url;
                         ThreadPool.QueueUserWorkItem(new WaitCallback(CrawlOnce), current);
-                        flag = true;
+                        change[count] = current;
                         count++;
-                        if (count > 9)
-                        {
-                            flag = false;
+                        if (count > 10)
                             break;
-                        }
-                         
                     }
                 }
-                Thread.Sleep(500);
-                if (!flag)
+                Thread.Sleep(1);
+                for (int i = 0; i < 20; i++)
+                {
+                    if(change[i]!=null)
+                        urls[change[i]] = true;
+                }
+                if (count>10)
                     break;
                 foreach (string url in urls.Keys)
                 {
@@ -70,7 +70,7 @@ namespace _9._1
             Console.WriteLine("爬行" + current + "页面!");
             used.Add(new Url(current));
             string html = DownLoad(current); // 下载
-            urls[current] = true;
+            
             if (Regex.IsMatch(html, "<!DOCTYPE html>"))
                 Parse(html, current);//解析,并加入新的链接
             Console.WriteLine("爬行结束");
