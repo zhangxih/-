@@ -37,7 +37,7 @@ namespace WindowsFormsApp
             string startUrl = StartUrl.Text;
             simpleCrawler.urls.Add(startUrl, false);//加入初始页面
             simpleCrawler.nexturls.Add(startUrl, false);
-            new Thread(simpleCrawler.Crawl).Start();
+            simpleCrawler.Crawl();
         }
     }
 }
