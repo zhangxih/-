@@ -32,7 +32,7 @@ namespace _5._1
         public List<Order> OrderSelect(int n)
         {
             var order = from o in orders
-                        where o.Number == n
+                        where o.OrderID == n
                         select o;
             List<Order> list = order.ToList();
             return list;
@@ -70,7 +70,7 @@ namespace _5._1
         {
             for (int i = orders.Count - 1; i >= 0; i--)
             {
-                if (orders[i].Number == n)
+                if (orders[i].OrderID == n)
                 {
                     orders.Remove(orders[i]);
                     Console.WriteLine("删除成功！");
@@ -85,9 +85,9 @@ namespace _5._1
         {
             for (int i = orders.Count - 1; i >= 0; i--)
             {
-                if (orders[i].Number == n)
+                if (orders[i].OrderID == n)
                 {
-                    orders[i].AddDetails(new OrderDetails(p,g));
+                    orders[i].AddDetails(new OrderDetail(p,g, n));
                     Console.WriteLine("修改成功！");
                     return;
                 }

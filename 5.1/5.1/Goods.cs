@@ -16,6 +16,10 @@ namespace _5._1
             {
                 return name;
             }
+            set
+            {
+                name = value;
+            }
         }
 
         public Goods(String n)

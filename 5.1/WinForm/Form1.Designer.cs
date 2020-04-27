@@ -230,7 +230,7 @@
             // 
             // DetailBindingSource
             // 
-            this.DetailBindingSource.DataSource = typeof(_5._1.OrderDetails);
+            this.DetailBindingSource.DataSource = typeof(_5._1.OrderDetail);
             // 
             // numberDataGridViewTextBoxColumn
             // 

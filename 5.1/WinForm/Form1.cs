@@ -17,12 +17,13 @@ namespace WinForm
         int flag;
         int select;
         OrderService orderservice = new OrderService();
-        OrderService sorderservice = new OrderService();
+        List<Order> orders= new List<Order>();
         Order o = new Order(0, "无", "无", 0);
         public Form1()
         {
+            orders.Add(new Order(0, "无", "无", 0));
             InitializeComponent();
-            OrderBindingSource.DataSource = orderservice.orders;
+            OrderBindingSource.DataSource = orders;
             DetailBindingSource.DataSource = o.details;
         }
         
@@ -42,14 +43,14 @@ namespace WinForm
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             o = (Order)OrderBindingSource.Current;
-            DetailBindingSource.DataSource = o.details;
+            DetailBindingSource.DataSource = orderservice.ReturnDetails(o.OrderID);
             DetailBindingSource.ResetBindings(true);
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             o = (Order)OrderBindingSource.Current;
-            orderservice.OrderDelete(o.Number);
+            orderservice.OrderDelete(o.OrderID);
             OrderBindingSource.ResetBindings(true);
             DetailBindingSource.ResetBindings(true);
         }
@@ -75,20 +76,17 @@ namespace WinForm
                     MessageBox.Show("请输入查询内容！");
                     return;
                 }
-                sorderservice.orders = orderservice.OrderSelect(select);
-                OrderBindingSource.DataSource = sorderservice.orders;
+                orders = orderservice.OrderSelect(select);
                 OrderBindingSource.ResetBindings(true);
             }
             if (flag == 3)
             {
-                sorderservice.orders = orderservice.OrderSelect(SelectInput.Text);
-                OrderBindingSource.DataSource = orderservice.OrderSelect(SelectInput.Text);
+                orders = orderservice.OrderSelect(SelectInput.Text);
                 OrderBindingSource.ResetBindings(true);
             }
             if (flag == 2)
             {
-                sorderservice.orders = orderservice.OrderSelectByName(SelectInput.Text);
-                OrderBindingSource.DataSource = sorderservice.orders;
+                orders = orderservice.OrderSelectByName(SelectInput.Text);
                 OrderBindingSource.ResetBindings(true);
             }
         }
@@ -108,14 +106,14 @@ namespace WinForm
         private void ChangeButton_Click(object sender, EventArgs e)
         {
             o = (Order)OrderBindingSource.Current;
-            Form form3 = new Form3(orderservice, o.Number);
+            Form form3 = new Form3(orderservice, o.OrderID);
             form3.ShowDialog();
             OrderBindingSource.ResetBindings(true);
         }
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
-            OrderBindingSource.DataSource = orderservice.orders;
+            orders = orderservice.OrderAll();
             OrderBindingSource.ResetBindings(true);
         }
     }

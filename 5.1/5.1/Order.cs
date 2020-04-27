@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,15 +10,28 @@ namespace _5._1
     [Serializable]
     public class Order:IComparable
     {
-        public List<OrderDetails> details = new List<OrderDetails>();
-        private int number;
+        public List<OrderDetail> details = new List<OrderDetail>();
+        private int orderID;
         private String customer;
         private int money;
-        public int Number
+        public List<OrderDetail> OrderDetails
         {
             get
             {
-                return number;
+                return details;
+            }
+            set { }
+        }
+        [Key]
+        public int OrderID
+        {
+            get
+            {
+                return orderID;
+            }
+            set
+            {
+                orderID = value;
             }
         }
 
@@ -27,6 +41,10 @@ namespace _5._1
             {
                 return customer;
             }
+            set
+            {
+                customer = value;
+            }
         }
 
         public int Money
@@ -35,12 +53,19 @@ namespace _5._1
             {
                 return money;
             }
+            set
+            {
+                money = value;
+            }
         }
+        public Order()
+        {
 
+        }
         public Order(int price, String customer, String goods, int number)
         {
-            details.Add(new OrderDetails(price, goods));
-            this.number = number;
+            details.Add(new OrderDetail(price, goods, number));
+            this.orderID = number;
             this.customer = customer;
             this.money += price;
         }
@@ -50,12 +75,12 @@ namespace _5._1
             Order o = obj2 as Order;
             if (o == null)
                 throw new System.ArgumentException();
-            return this.Number.CompareTo(o.Number);
+            return this.OrderID.CompareTo(o.OrderID);
         }
 
-        public void AddDetails(OrderDetails orderdetail)
+        public void AddDetails(OrderDetail orderdetail)
         {
-            foreach(OrderDetails o in details)
+            foreach(OrderDetail o in details)
             {
                 if (orderdetail.Equals(o))
                 {
@@ -70,8 +95,8 @@ namespace _5._1
 
         public override string ToString()
         {
-            String s = "订单编号:" + this.Number + ",客户:" + this.Customer + ",总金额:" + this.money + ";";
-            foreach(OrderDetails o in details)
+            String s = "订单编号:" + this.OrderID + ",客户:" + this.Customer + ",总金额:" + this.money + ";";
+            foreach(OrderDetail o in details)
             {
                 s += o.ToString();
             }
@@ -81,7 +106,7 @@ namespace _5._1
         public override bool Equals(object obj)
         {
             Order o = obj as Order;
-            return o != null && o.Number == Number;
+            return o != null && o.OrderID == OrderID;
         }
     }
 }
