@@ -53,11 +53,11 @@ namespace _5._1
         {
             get
             {
-                return g.Name;
+                return this.g.Name;
             }
             set
             {
-                
+                this.g.Name = value;
             }
         }
         public OrderDetail()

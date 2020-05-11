@@ -9,16 +9,16 @@ namespace _5._1
     [Serializable]
     public class Goods
     {
-        private String name;
+        private String name="无";
         public String Name
         {
             get
             {
-                return name;
+                return this.name;
             }
             set
             {
-                name = value;
+                this.name = value;
             }
         }
 
