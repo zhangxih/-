@@ -23,9 +23,5 @@ namespace _5._1
         {
             get;set;
         }
-        public DbSet<Goods> Goods
-        {
-            get;set;
-        }
     }
 }

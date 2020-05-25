@@ -15,6 +15,8 @@ namespace _5._1
         public Goods g;
         private int orderID;
         private Order order;
+        public string goodsname;
+        public int price;
         
         public int OrderID
         {
@@ -31,11 +33,11 @@ namespace _5._1
         {
             get
             {
-                return p.Money;
+                return this.price;
             }
             set
             {
-
+                this.price = value;
             }
         }
         [Key]
@@ -43,11 +45,11 @@ namespace _5._1
         {
             get
             {
-                return this.g.Name;
+                return this.goodsname;
             }
             set
             {
-                this.g.Name = value;
+                this.goodsname = value;
             }
         }
         public OrderDetail()
@@ -59,6 +61,8 @@ namespace _5._1
             this.p = new Price(price);
             this.g = new Goods(goods);
             this.orderID = id;
+            this.goodsname = goods;
+            this.price = price;
         }
 
         public override string ToString()

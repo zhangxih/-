@@ -37,6 +37,7 @@ namespace WinForm
             Form form2 = new Form2(orderservice,number);
             form2.ShowDialog();
             number++;
+            OrderBindingSource.DataSource = orders;
             OrderBindingSource.ResetBindings(true);
         }
 
@@ -51,6 +52,7 @@ namespace WinForm
         {
             o = (Order)OrderBindingSource.Current;
             orderservice.OrderDelete(o.OrderID);
+            OrderBindingSource.DataSource = orders;
             OrderBindingSource.ResetBindings(true);
             DetailBindingSource.ResetBindings(true);
         }
@@ -77,16 +79,19 @@ namespace WinForm
                     return;
                 }
                 orders = orderservice.OrderSelect(select);
+                OrderBindingSource.DataSource = orders;
                 OrderBindingSource.ResetBindings(true);
             }
             if (flag == 3)
             {
                 orders = orderservice.OrderSelect(SelectInput.Text);
+                OrderBindingSource.DataSource = orders;
                 OrderBindingSource.ResetBindings(true);
             }
             if (flag == 2)
             {
                 orders = orderservice.OrderSelectByName(SelectInput.Text);
+                OrderBindingSource.DataSource = orders;
                 OrderBindingSource.ResetBindings(true);
             }
         }
@@ -100,6 +105,7 @@ namespace WinForm
         private void InputButton_Click(object sender, EventArgs e)
         {
             orderservice.Import();
+            OrderBindingSource.DataSource = orders;
             OrderBindingSource.ResetBindings(true);
         }
 
@@ -108,6 +114,7 @@ namespace WinForm
             o = (Order)OrderBindingSource.Current;
             Form form3 = new Form3(orderservice, o.OrderID);
             form3.ShowDialog();
+            OrderBindingSource.DataSource = orders;
             OrderBindingSource.ResetBindings(true);
         }
 

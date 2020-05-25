@@ -18,7 +18,6 @@ namespace _5._1
                 db.Orders.Add(order);
                 foreach (OrderDetail d in order.details) {
                     db.OrderDetails.Add(d);
-                    db.Goods.Add(new Goods(d.Goods));
                 }
                 db.SaveChanges();
             }
@@ -134,10 +133,12 @@ namespace _5._1
         {
             using (var db = new OrderContext())
             {
+                var query = db.Orders;
+                List<Order> orders = query.ToList();
                 BinaryFormatter formatter = new BinaryFormatter();
                 using (FileStream fs = new FileStream("s.xml", FileMode.Create))
                 {
-                    formatter.Serialize(fs, db.Orders);
+                    formatter.Serialize(fs, orders);
                 }
             }
         }

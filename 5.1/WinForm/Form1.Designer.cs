@@ -46,10 +46,10 @@
             this.DeleteButton = new System.Windows.Forms.Button();
             this.CreateButton = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.DetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.orderIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.goodsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrderBindingSource)).BeginInit();
             this.Main.SuspendLayout();
@@ -116,7 +116,7 @@
             this.Main.Size = new System.Drawing.Size(800, 63);
             this.Main.TabIndex = 1;
             this.Main.TabStop = false;
-            this.Main.Text = "主菜单";
+            this.Main.Text = "主菜单 点击右方圆圈刷新数据库";
             // 
             // ResetButton
             // 
@@ -239,10 +239,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(800, 82);
             this.dataGridView2.TabIndex = 2;
             // 
-            // DetailBindingSource
-            // 
-            this.DetailBindingSource.DataSource = typeof(_5._1.OrderDetail);
-            // 
             // orderIDDataGridViewTextBoxColumn1
             // 
             this.orderIDDataGridViewTextBoxColumn1.DataPropertyName = "OrderID";
@@ -260,6 +256,10 @@
             this.goodsDataGridViewTextBoxColumn.DataPropertyName = "Goods";
             this.goodsDataGridViewTextBoxColumn.HeaderText = "Goods";
             this.goodsDataGridViewTextBoxColumn.Name = "goodsDataGridViewTextBoxColumn";
+            // 
+            // DetailBindingSource
+            // 
+            this.DetailBindingSource.DataSource = typeof(_5._1.OrderDetail);
             // 
             // Form1
             // 
