@@ -16,6 +16,10 @@ namespace _5._1
             using (var db = new OrderContext())
             {
                 db.Orders.Add(order);
+                foreach (OrderDetail d in order.details) {
+                    db.OrderDetails.Add(d);
+                    db.Goods.Add(new Goods(d.Goods));
+                }
                 db.SaveChanges();
             }
         }
@@ -90,7 +94,7 @@ namespace _5._1
         {
             using (var db = new OrderContext())
             {
-                var order = db.Orders.Include("OrderDetails").SingleOrDefault(o => o.OrderID == n);
+                var order = db.Orders.SingleOrDefault(o => o.OrderID == n);
                 if (order != null)
                 {
                     db.Orders.Remove(order);
@@ -104,7 +108,7 @@ namespace _5._1
         {
             using (var db = new OrderContext())
             {
-                var order = db.Orders.Include("OrderDetails").SingleOrDefault(o => o.OrderID == n);
+                var order = db.Orders.SingleOrDefault(o => o.OrderID == n);
                 if (order != null)
                 {
                     var orderdetail = new OrderDetail(p, g, n);

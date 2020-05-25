@@ -234,8 +234,11 @@
     <None Include="Properties\DataSources\WinForm.Properties.Settings.datasource" />
     <None Include="Properties\DataSources\_5._1.Goods.datasource" />
     <None Include="Properties\DataSources\_5._1.Order.datasource" />
+    <None Include="Properties\DataSources\_5._1.OrderContext.datasource" />
+    <None Include="Properties\DataSources\_5._1.OrderDetail.datasource" />
     <None Include="Properties\DataSources\_5._1.OrderDetails.datasource" />
     <None Include="Properties\DataSources\_5._1.OrderService.datasource" />
+    <None Include="Properties\DataSources\_5._1.OrderService2.datasource" />
     <None Include="Properties\DataSources\_5._1.Price.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

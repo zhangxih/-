@@ -20,11 +20,11 @@ namespace WinForm
         List<Order> orders= new List<Order>();
         Order o = new Order(0, "无", "无", 0);
         public Form1()
-        {
+        {   
             orders.Add(new Order(0, "无", "无", 0));
             InitializeComponent();
             OrderBindingSource.DataSource = orders;
-            DetailBindingSource.DataSource = o.details;
+            DetailBindingSource.DataSource = o.OrderDetails;
         }
         
         private void SelectInput_Enter(object sender, EventArgs e)
@@ -114,6 +114,7 @@ namespace WinForm
         private void ResetButton_Click(object sender, EventArgs e)
         {
             orders = orderservice.OrderAll();
+            OrderBindingSource.DataSource = orders;
             OrderBindingSource.ResetBindings(true);
         }
     }

@@ -50,6 +50,14 @@ namespace _5._1
                             Console.WriteLine(o.ToString());
                         }
                     }
+                    else if (s == "all")
+                    {
+                        List<Order> list = orderservice.OrderAll();
+                        foreach (Order o in list)
+                        {
+                            Console.WriteLine(o.ToString());
+                        }
+                    }
                     else if (s == "goods")
                     {
                         Console.WriteLine("请输入查询信息");

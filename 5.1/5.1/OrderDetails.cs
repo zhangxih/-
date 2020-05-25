@@ -15,17 +15,7 @@ namespace _5._1
         public Goods g;
         private int orderID;
         private Order order;
-        public Order Order
-        {
-            get
-            {
-                return order;
-            }
-            set
-            {
-                order = value;
-            }
-        }
+        
         public int OrderID
         {
             get

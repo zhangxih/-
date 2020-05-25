@@ -22,6 +22,7 @@ namespace _5._1
             }
             set { }
         }
+
         [Key]
         public int OrderID
         {
@@ -64,7 +65,7 @@ namespace _5._1
         }
         public Order(int price, String customer, String goods, int number)
         {
-            details.Add(new OrderDetail(price, goods, number));
+            this.details.Add(new OrderDetail(price, goods, number));
             this.orderID = number;
             this.customer = customer;
             this.money += price;
